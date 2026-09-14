@@ -63,7 +63,7 @@ function sendWhatsApp(){
   cart.forEach(p=>msg+=`• ${p.nome} — ${p.qtd} un. — ${encodeURIComponent(money(p.preco*p.qtd))}%0A`);
   if(obs)msg+=`%0AObservação: ${encodeURIComponent(obs)}`;
   msg+='%0A%0AGostaria de confirmar disponibilidade, prazo e detalhes do pedido.';
-  window.open(`https://wa.me/5588997638231?text=${msg}`,'_blank');
+  window.open(`https://wa.me/5588997641280?text=${msg}`,'_blank');
 }
 function toast(text){ let t=document.getElementById('railToast'); if(!t){t=document.createElement('div');t.id='railToast';t.className='rail-toast';document.body.appendChild(t);} t.textContent=text;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800); }
 
