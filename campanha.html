@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Railarts | Campanha Dia dos Professores</title>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" type="image/png" href="imagens/Design sem nome.png">
+</head>
+<body>
+<header><div class="logo"><a href="index.html">
+<img src="imagens/Design sem nome (4).png" class="logo-imagem" alt="Railarts">
+</a></div><nav id="menu"><a href="index.html">INÍCIO</a>
+  <a href="produtos.html">PRODUTOS</a><a href="campanha.html" class="ativo">DIA DOS PROFESSORES</a>
+  <a href="index.html#servicos">SERVIÇOS</a>
+  <a href="index.html#contato">CONTATO</a>
+</nav><div class="acoes-header">
+  <a class="carrinho-topo" href="produtos.html#carrinho">🛒 Carrinho
+     <b id="contadorCarrinho">0</b>
+  </a>
+  <a class="conta-topo" data-login-link href="login.html">👤 
+    <span data-user-name>Minha conta</span></a>
+</div>
+<button class="menu-mobile" onclick="abrirMenu()">☰</button>
+</header>
+<main>
+  <section class="campanha-hero"><div><span class="tag-produtos">CAMPANHA ESPECIAL</span>
+    <h1>Dia dos Professores</h1>
+    <p>Presentes personalizados para agradecer quem transforma conhecimento em futuro.</p>
+    <a href="#produtos-campanha" class="btn-amarelo">🎁 VER PRESENTES</a></div>
+    <img src="imagens/Professores/bloco.png" alt="Produtos personalizados para professores">
+  </section>
+<section class="campanha-produtos" id="produtos-campanha">
+  <div class="cabecalho-produtos">
+    <div>
+    <span class="tag-produtos">SELEÇÃO ESPECIAL</span>
+    <h2>Presentes para professores</h2><p>Esta página reúne somente os produtos da campanha.</p></div>
+    <a class="btn-preto" href="produtos.html#carrinho">🛒 Ver carrinho</a>
+  </div>
+  <div class="barra-pesquisa">
+    <label class="campo-pesquisa" for="pesquisaCampanha">
+      <span aria-hidden="true">🔎</span>
+      <input type="search" id="pesquisaCampanha" list="sugestoesCampanha" placeholder="Pesquisar presente..." aria-label="Pesquisar presentes da campanha">
+    </label>
+    <datalist id="sugestoesCampanha"></datalist>
+  </div>
+  <div class="catalogo" id="catalogoCampanha"></div>
+</section>
+</main>
+<div class="image-modal" id="imageModal" aria-hidden="true"><button class="image-modal-close" type="button" aria-label="Fechar imagem">×</button>
+  <img id="imageModalImg" src="" alt=""></div>
+<footer>
+  <div>
+    <h2>Railarts</h2>
+    <p>Presentes que emocionam!</p>
+  </div>
+  <div>
+    <h3>Navegação</h3>
+    <a href="index.html">Início</a><a href="produtos.html">Produtos</a>
+    <a href="login.html">Minha conta</a>
+  </div>
+</footer>
+<div class="copyright">©️ 2026 Railarts Gráfica.</div>
+<script src="script.js"></script>
+<script src="loja.js"></script><script>
+const campanha=[
+{id:101,nome:'Porta bis',categoria:'Dia dos Professores',preco:18,desc:'',emoji:'🎁',imagem:'imagens/Professores/porta bis.jpg'},
+{id:103,nome:'Mimo Personalizado para Professor',categoria:'Dia dos Professores',preco:2.5,desc:'Mimo personalizado para agradecer ao professor.',emoji:'🍫',imagem:'imagens/Professores/IMG_3304.JPG'},
+{id:104,nome:'Tag Especial Dia dos Professores',categoria:'Dia dos Professores',preco:6.5,desc:'Tag personalizada para complementar o presente.',emoji:'🏷️',imagem:'imagens/Professores/IMG_20230914_162700.jpg'},
+{id:107,nome:'Maça de Acrilico',categoria:'Dia dos Professores',preco:8,desc:'Acompanha caramelo.',emoji:'☕',imagem:'imagens/Professores/B56E5025-3F5A-4210-998D-DC892F0358F7.png'},
+{id:108,nome:'bloco 10 x 15',categoria:'Dia dos Professores',preco:20,desc:'Capa dura, c/ caneta.',emoji:'☕',imagem:'imagens/Professores/bloco.png'},
+{id:109,nome:'Caneca',categoria:'Dia dos Professores',preco:40,desc:'Caneca personalizada para um presente inesquecível.',emoji:'☕',imagem:'imagens/Professores/f2.png'},
+{id:111,nome:'trofel',categoria:'Dia dos Professores',preco:12,desc:'',emoji:'☕',imagem:'imagens/Professores/IMG_8384.jpg'},
+{id:113,nome:'Bloco Colado',categoria:'Dia dos Professores',preco:6,desc:'',emoji:'☕',imagem:'imagens/Professores/IMG_8919.jpg'},
+{id:114,nome:'tag kit kat',categoria:'Dia dos Professores',preco:10,desc:'',emoji:'☕',imagem:'imagens/Professores/IMG_9088.jpg'},
+{id:116,nome:'Porta Jois',categoria:'Dia dos Professores',preco:22,desc:'Personalizavel.',emoji:'☕',imagem:'imagens/Professores/IMG_9120.jpg'},
+{id:117,nome:'kit Especial',categoria:'Dia dos Professores',preco:20,desc:'cx com nutela, lapis, borracha e apontador.',emoji:'☕',imagem:'imagens/Professores/IMG_9124.jpg'},
+
+];
+function renderCampanha(lista=campanha){
+  const el=document.getElementById('catalogoCampanha');
+  if(!el) return;
+
+  el.innerHTML=lista.map(p=>`<article class="produto-card"><div class="produto-visual produto-foto"><img src="${p.imagem}" alt="${p.nome}" class="imagem-ampliavel"></div><div class="produto-info"><span class="categoria">${p.categoria}</span><h3>${p.nome}</h3><p>${p.desc}</p><div class="produto-bottom"><strong>${money(p.preco)}</strong><button onclick='addToCart(${JSON.stringify(p)})'>+ ADICIONAR</button></div></div></article>`).join('');
+}
+
+function renderSugestoesCampanha(){
+  const datalist=document.getElementById('sugestoesCampanha');
+  if(!datalist) return;
+
+  const sugestoes=[...new Set(campanha.map(p=>p.nome))].slice(0, 8);
+  datalist.innerHTML=sugestoes.map(nome=>`<option value="${nome}"></option>`).join('');
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const inputPesquisa=document.getElementById('pesquisaCampanha');
+
+  renderSugestoesCampanha();
+  renderCampanha();
+
+  if(inputPesquisa){
+    inputPesquisa.addEventListener('input', (event)=>{
+      const termo=event.target.value.trim().toLowerCase();
+
+      if(!termo){
+        renderCampanha();
+        return;
+      }
+
+      const lista=campanha.filter(p=>`${p.nome} ${p.desc} ${p.categoria}`.toLowerCase().includes(termo));
+      renderCampanha(lista);
+    });
+  }
+
+  const modal=document.getElementById('imageModal');
+  const modalImg=document.getElementById('imageModalImg');
+  const closeBtn=document.querySelector('.image-modal-close');
+
+  function abrirModal(src,alt){
+    modalImg.src=src;
+    modalImg.alt=alt;
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+  }
+
+  function fecharModal(){
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.imagem-ampliavel').forEach(img=>{
+    img.addEventListener('click',()=>abrirModal(img.src, img.alt));
+  });
+
+  closeBtn.addEventListener('click',fecharModal);
+  modal.addEventListener('click',(event)=>{
+    if(event.target===modal){
+      fecharModal();
+    }
+  });
+
+  document.addEventListener('keydown',(event)=>{
+    if(event.key==='Escape' && modal.classList.contains('show')){
+      fecharModal();
+    }
+  });
+});
+</script></body></html>

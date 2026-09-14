@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Railarts | Produtos</title>
+        <link rel="stylesheet" href="estilo.css">
+        <link rel="icon" type="image/png" href="imagens/Design sem nome.png">
+    </head>
+        <body>
+<header>
+    <div class="logo">
+        <a href="index.html"><img src="imagens/Design sem nome (4).png" alt="Logo Railarts" class="logo-imagem"></a>
+    </div>
+    <nav id="menu">
+        <a href="index.html">INÍCIO</a>
+        <a href="index.html#sobre">SOBRE NÓS</a>
+        <a href="produtos.html" class="ativo">PRODUTOS</a>
+        <a href="campanha.html">DIA DOS PROFESSORES</a>
+        <a href="index.html#servicos">SERVIÇOS</a>
+        <a href="index.html#contato">CONTATO</a>
+    </nav>
+    <div class="acoes-header">
+        <a class="conta-topo" data-login-link href="login.html">👤 <span data-user-name>Minha conta</span></a>
+        <a class="carrinho-topo" href="#carrinho">🛒 Carrinho <b id="contadorCarrinho">0</b>
+        </a>
+    </div>
+        <button class="menu-mobile" onclick="abrirMenu()">☰</button>
+    </header>
+<main>
+    <section class="pagina-produtos">
+        <div class="cabecalho-produtos"><div>
+            <span class="tag-produtos">RAILARTS</span>
+            <h1>Nossos produtos</h1><p>Escolha seus produtos, adicione ao carrinho e continue navegando por outras páginas sem perder sua seleção.</p>
+        </div>
+        <a class="btn-amarelo" href="#carrinho">🛒 Ver carrinho</a>
+    </div>
+    <div class="barra-pesquisa">
+        <label class="campo-pesquisa" for="pesquisaProdutos">
+            <span aria-hidden="true">🔎</span>
+            <input type="search" id="pesquisaProdutos" list="sugestoesProdutos" placeholder="Pesquisar produto..." aria-label="Pesquisar produtos">
+        </label>
+        <datalist id="sugestoesProdutos"></datalist>
+    </div>
+    <div class="filtros">
+        <button class="filtro ativo" data-filtro="todos">Todos</button>
+        <button class="filtro" data-filtro="canecas">Canecas</button>
+        <button class="filtro" data-filtro="copos">Copos</button>
+        <button class="filtro" data-filtro="Vestuário Personalizado">Vestuário</button>
+         <button class="filtro" data-filtro="Ecobags">Ecobags</button>
+        <button class="filtro" data-filtro="papelaria">Papelaria</button>
+        <button class="filtro" data-filtro="lembrancinhas">Lembrancinhas</button>
+        <button class="filtro" data-filtro="outros">Outros</button>
+    </div>
+    <div class="catalogo" id="catalogo"></div>
+</section>
+<section class="area-carrinho" id="carrinho">
+    <div class="carrinho-box">
+        <div class="carrinho-titulo">
+            <div>
+                <span class="tag-produtos">SEU PEDIDO</span>
+            <h2>🛒 Carrinho</h2></div><button class="limpar-carrinho" onclick="clearCart()">Limpar carrinho</button>
+        </div><div id="itensCarrinho" class="itens-carrinho"></div>
+        <div class="carrinho-vazio" id="carrinhoVazio">
+            <div class="carrinho-vazio-icone">🛒</div>
+            <h3>Seu carrinho está vazio</h3><p>Adicione produtos acima para montar seu pedido.</p>
+        </div>
+        <div class="resumo-carrinho"><div>
+            <span>Produtos diferentes</span>
+            <strong id="totalItens">0</strong>
+        </div>
+        <div><span>Quantidade</span><strong id="totalQuantidade">0</strong></div>
+        <div class="observacao"><span>Observação</span><input id="observacaoPedido" type="text" placeholder="Ex.: nomes, cores, tema..." /></div><button class="btn-whatsapp" onclick="sendWhatsApp()">📲 ENVIAR PEDIDO PELO WHATSAPP</button>
+    </div>
+</div>
+</section>
+</main>
+<div class="image-modal" id="imageModal" aria-hidden="true"><button class="image-modal-close" type="button" aria-label="Fechar imagem">×</button><img id="imageModalImg" src="" alt=""></div>
+<footer><div class="footer-logo"><img src="imagens/Design sem nome.png" alt="Logo Railarts" class="footer-logo-imagem"><div><h2>Railarts</h2><p>Presentes que emocionam!<br>Personalizados para todas as ocasiões.</p></div></div><div><h3>Contato</h3><p>☏ (88) 9 XXXXXXXX</p><p>◎ @railarts_mimos</p><p>⌖ Acaraú - CE</p><p>✉ railarts.mimos@gmail.com</p></div><div><h3>Navegação</h3><a href="index.html">Início</a><a href="produtos.html">Produtos</a><a href="campanha.html">Dia dos Professores</a><a href="login.html">Minha conta</a></div></footer><div class="copyright">©️ 2026 Railarts Gráfica. Todos os direitos reservados.</div>
+<script src="script.js"></script><script src="loja.js"></script><script src="produtos.js"></script></body></html>
