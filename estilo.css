@@ -192,6 +192,7 @@ nav a:hover {
 .hero-imagem-container {
     flex: 0 0 420px;
     height: 300px;
+    width: 100%;
     border-radius: 22px;
     overflow: hidden;
     background: #f3f3f3;
